@@ -44,8 +44,8 @@ function blankCanvas() {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 }
 
-function anim(timestamp) {
-    bildeX += 3;
+function anim() {
+    bildeX += 4;
     bildeY += 3;
     if (bildeX < ctx.canvas.width) {
         blankCanvas();
@@ -69,14 +69,3 @@ Object.keys(meny).forEach((key) => {
         visValgtLag(key);
     });
 });
-
-
-// meny['milan'].addEventListener('click', () => {
-//     visValgtLag('milan');
-// });
-// meny['roma'].addEventListener('click', () => {
-//     visValgtLag('roma');
-// });
-// meny['inter'].addEventListener('click', () => {
-//     visValgtLag('inter');
-// });

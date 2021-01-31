@@ -13,6 +13,7 @@ class Lag {
         this.vunnet = 0;
         this.uavgjort = 0;
         this.tapt = 0;
+        this.spiltMot = [];
     }
 
     get poeng() {
@@ -32,6 +33,17 @@ class Lag {
                 this.tapt, this.scoret, this.sluppetInn, this.maalforskjell,
                 this.poeng];
     }
+
+    leggTilSpiltMot(lag) {
+        if (this.harSpiltMot(lag) === false) {
+            this.spiltMot.push(lag);
+        }
+    }
+
+    harSpiltMot(lag) {
+        return this.spiltMot.includes(lag);
+    }
+
 }
 
 const pulje = {
@@ -69,6 +81,8 @@ function lagre() {
         window.alert('Du må velge lagene som har spilt mot hverandre!');
     } else if (lag1Select.value === lag2Select.value) {
         window.alert('Du må velge to ulike lag!');
+    } else if (pulje[lag1Select.value].harSpiltMot(lag2Select.value)) {
+        window.alert('Disse laga har allerede spilt mot hverandre!');
     } else {
         console.log('lagre');
         // Midlertidig lagring av mål lag 1 og lag 2
@@ -85,6 +99,8 @@ function oppdaterLagObjekter(l1m, l2m) {
     pulje[lag1Select.value].sluppetInn += l2m;
     pulje[lag2Select.value].scoret += l2m;
     pulje[lag2Select.value].sluppetInn += l1m;
+    pulje[lag1Select.value].leggTilSpiltMot(lag2Select.value); 
+    pulje[lag2Select.value].leggTilSpiltMot(lag1Select.value); 
     if (l1m > l2m) {
         // Lag 1 vant
         pulje[lag1Select.value].vunnet += 1;

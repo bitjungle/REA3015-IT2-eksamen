@@ -1,0 +1,7 @@
+td {
+    text-transform: capitalize;
+}
+
+canvas {
+    border: thin dotted silver;
+}

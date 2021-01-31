@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="BITJUNGLE Rune Mathisen">
+    <meta name="date" content="15 Jan 2021">
+    <title>Document</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="w3-container">
+        <h1>Firkanter</h1>
+        <div class="w3-responsive">
+            <table class="w3-table-all w3-hoverable">
+                <thead>
+                    <tr>
+                        <th>Type firkant</th>
+                        <th>Bunnlinje</th>
+                        <th>Topplinje</th>
+                        <th>Høyde</th>
+                        <th>Forskyvning</th>
+                        <th>Areal</th>
+                    </tr>
+                </thead>
+                <tbody id="firkantdata">
+                    <!-- Innhold blir satt fra Javascript -->
+                </tbody>
+            </table>
+        </div>
+        <hr>
+        <h2>Legg til, endre eller slette</h2>
+        <p>Klikk på rad i tabell for å endre eller slette en firkant. Du kan endre parametrene til firkanten i
+            skjemafeltene nedenfor. Om du vil lage en helt ny firkant, trykker du på
+            knappen "Legg til...".</p>
+        <div id="inputskjema" class="w3-container">
+            <input id="firkantId" type="hidden" value="">
+            <label for="bunnlinje">Bunnlinje</label>
+            <input id="bunnlinje" name="bunnlinje" type="number" value="1" min="1">
+            <label for="topplinje">Topplinje</label>
+            <input id="topplinje" name="topplinje" type="number" value="1" min="1">
+            <label for="hoyde">Høyde</label>
+            <input id="hoyde" name="hoyde" type="number" value="1" min="1">
+            <label for="forskyvning">Forskyvning</label>
+            <input id="forskyvning" name="forskyvning" type="number" value="0" min="0">
+            <br>
+            <button id="lagreFirkant">Lagre</button>
+            <button id="slettFirkant">Slett</button>
+            <button id="nyFirkant">Legg til ny firkant</button>
+        </div>
+        <h2>Figur</h2>
+        <div id="tegneområde" class="w3-container">
+            <p>Klikk på rad i tabellen for å tegne firkant</p>
+            <canvas id="can1">Kan ikke vise tegning av firkanten.</canvas>
+        </div>
+    </main>
+</body>
+
+</html>

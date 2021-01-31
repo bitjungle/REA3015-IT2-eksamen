@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="BITJUNGLE Rune Mathisen">
+    <meta name="date" content="30 Jan 2021">
+    <title>Oppgave 2</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="w3-container">
+        <p>Velg de to lagene som har spilt kamp, og legg inn antall mål.</p>
+        <div class="w3-container">
+            <select id="lag1"></select>
+            <input type="number" id="lag1Maal" size="3" min="0" value="0">
+            <select id="lag2"></select>
+            <input type="number" id="lag2Maal" size="3" min="0" value="0">
+            <button id="lagre">Lagre</button>
+        </div>
+        <hr>
+        <div class="w3-container">
+            <table class="w3-table-all w3-hoverable">
+                <thead>
+                    <tr>
+                        <th>Nr</th>
+                        <th>Lag</th>
+                        <th>Antall kamper</th>
+                        <th>Antall kamper vunnet</th>
+                        <th>Antall kamper uavgjort</th>
+                        <th>Antall kamper tapt</th>
+                        <th>Egne mål</th>
+                        <th>Mål mot</th>
+                        <th>Målforskjell</th>
+                        <th>Poengsum</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelldata">
+                    <!-- Innhold blir satt fra Javascript -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,5 +1,5 @@
-# REA3105 IT2 eksamen
-## Eksamensoppgaver og løsningsforslag til faget REA3105 IT2
+# REA3015 IT2 eksamen
+## Eksamensoppgaver og løsningsforslag til faget REA3015 IT2
 
 All kildekode til løsningsforslaga har lisens GNU GPLv3 og er &copy; 2021 BITJUNGLE Rune Mathisen.
 

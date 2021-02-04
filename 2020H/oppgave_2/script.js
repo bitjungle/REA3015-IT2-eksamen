@@ -109,24 +109,26 @@ function lagreFirkant() {
                                 parseInt(inputTopplinje.value),
                                 parseInt(inputHoyde.value),
                                 parseInt(inputForskyvning.value));
-    
+    let id = null;
     if (inputId.value) {
+        id = parseInt(inputId.value);
         // Dersom inpudId har en verdi, oppdaterer vi en firkant
-        console.log('Oppdaterer eksisterende firkant');
-        firkanter[parseInt(inputId.value)] = firkant;
+        console.log('Oppdaterer eksisterende firkant med id ' + id);
+        firkanter[id] = firkant;
     } else {
         // Dersom inpudId ikke har noen verdi, lagrer vi en ny firkant
         console.log('Lagrer ny firkant');
         firkanter.push(firkant);
+        id = firkanter.length - 1;
     }
+    skrivUtTabell(); // Skriver ut tabellen på nytt
+    tegneFirkant(id); // Tegner den nye/oppdaterte firkanten
+    merkValgtRad(id); // Merker raden med den nye/oppdaterte firkanten
 }
 
 function nyFirkant() {
     inputId.value = null; // Settes til null fordi vi lager en ny firkant
     lagreFirkant(); // Lagrer den nye firkanten
-    skrivUtTabell(); // Skriver ut tabellen på nytt
-    tegneFirkant(firkanter.length - 1); // Tegner den nye firkanten
-    merkValgtRad(firkanter.length - 1); // Merker raden med den nye firkanten
 }
 
 function slettFirkant() {
@@ -168,10 +170,11 @@ function tegneFirkant(id) {
 }
 
 function merkValgtRad(id) {
+    console.log(`Merker rad med id #firkant-${id}`);
     const valgtRad = document.querySelector(`#firkant-${id}`);
     // Merker den valgte raden ved å angi en css-klasse
     valgtRad.classList.add('w3-green');
-    if (sistValgteRad) {
+    if (sistValgteRad && sistValgteRad != id) {
         // Dersom det er valgt en rad tidligere, fjerner vi css-klassen på denne
         const lastSelectedRow = document.querySelector(`#firkant-${sistValgteRad}`);
         lastSelectedRow.classList.remove('w3-green');

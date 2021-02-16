@@ -38,29 +38,15 @@ function init() {
     lagSelectMeny(selectAktivitet);
 }
 
-function finnIntensitet() {
-    const intensitet = document.querySelector('input[name=intensitet]:checked').value;
-    switch (intensitet) {
-        case 'lav':
-            return 0.8;
-        case 'middels':
-            return 1.0;
-        case 'hoy':
-            return 1.2;  
-        default:
-            return None;
-    }
-}
-
 function beregn() {
-    const faktor = finnIntensitet();
+    const intensitet = parseFloat(document.querySelector('input[name=intensitet]:checked').value);
     const varighet = parseInt(document.querySelector("#varighet").value);
     const aktivitet = aktiviteter.find(a => a.navn === selectAktivitet.value);
     if (aktivitet) {
-        const kcal = Math.round(faktor * (varighet/60) * aktivitet.kcal);
+        const kcal = Math.round(intensitet * (varighet/60) * aktivitet.kcal);
         document.querySelector("#svar").innerHTML = `${kcal} kalorier`;
     } else {
-        window.alert("Du må velge aktivitet")
+        window.alert("Du må velge aktivitet");
     }
 }
 

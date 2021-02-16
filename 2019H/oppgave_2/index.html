@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="nb">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="BITJUNGLE Rune Mathisen">
+    <meta name="date" content="16 Feb 2021">
+    <title>Treningskalkulator</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="w3-container">
+        <h1>Treningskalkulator</h1>
+        <div id="aktivitetsvalg" class="w3-container">
+        <select id="aktivitet"></select>
+        </div>
+        <div id="intensitetsvalg" class="w3-container">
+            <p>Velg intensitet:</p>
+            <input type="radio" id="lav" value="lav" name="intensitet">Lav<br>
+            <input type="radio" id="middels" value="middels" name="intensitet" selected>Middels<br>
+            <input type="radio" id="hoy" value="hoy" name="intensitet">Høy
+        </div>
+        <div id="varighetsvalg">
+            <p>Oppgi varighet på treninga i minutter:</p>
+            <input id="varighet" type="number" min="0" value="0">
+        </div>
+        <button id="beregn" class="w3-button w3-blue">Beregn kaloriforbruk</button>
+        <div id="svarområde" class="w3-container">
+            <p>Svar:</p>
+            <p id="svar"></p>
+        </div>
+    </main>
+</body>
+
+</html>

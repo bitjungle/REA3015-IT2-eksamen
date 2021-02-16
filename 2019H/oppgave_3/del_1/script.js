@@ -1,6 +1,5 @@
-const selectMuskel = document.querySelector("#muskelgrupper");
 const listeOvinger = document.querySelector("#ovinger_liste");
-
+let selectMuskel = document.querySelector("#muskelgrupper");
 class Muskelgruppe {
     constructor(navn, ovinger) {
         this.navn = navn;
@@ -34,9 +33,9 @@ function lagSelectMeny(selectElement) {
     });
 }
 
-function finnOvinger() {
+function finnOvinger(muskelvalg) {
     listeOvinger.innerHTML = '';
-    const muskel = muskelgrupper.find(m => m.navn === selectMuskel.value);
+    const muskel = muskelgrupper.find(m => m.navn === muskelvalg);
     muskel.ovinger.forEach(o => {
         listeOvinger.innerHTML += `<li>${o}</li>\n`;
     });
@@ -47,5 +46,8 @@ function init() {
 }
 
 window.addEventListener('load', init);
-selectMuskel.addEventListener('click', finnOvinger);
+selectMuskel.addEventListener('change', () => {
+    //Event change fungerer ikke i Safari, vet ikke hvorfor
+    finnOvinger(selectMuskel.value);
+});
 

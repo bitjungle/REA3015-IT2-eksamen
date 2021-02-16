@@ -14,32 +14,34 @@ const lag2Maalforskjell = document.querySelector("#lag2Maalforskjell");
 const lag2Poeng = document.querySelector("#lag2Poeng");
 
 class Lag {
-    constructor(navn) {
+    constructor(id, navn) {
+        this.id = id;
         this.navn = navn;
     }
 
 }
 
-const pulje = {
-    milan: new Lag("AC Milan"),
-    roma: new Lag("AS Roma"),
-    inter: new Lag("FC Inter")
-};
+const pulje = [
+    new Lag('milan', "AC Milan"),
+    new Lag('roma', "AS Roma"),
+    new Lag('inter', "FC Inter")
+];
 
 function lagSelectMeny(selectElement) {
     // Legger først inn et tomt element, sånn at ingen lag er forhåndsvalgt
     selectElement.appendChild(document.createElement("option"));
     // Itererer over alle lagene som er gitt som input
-    Object.keys(pulje).forEach((key) => {
+    pulje.forEach((lag) => {
         let opt = document.createElement("option");
-        opt.innerHTML = pulje[key].navn;
-        opt.value = key;
+        opt.innerHTML = lag.navn;
+        opt.value = lag.id;
         // Legger laget til select-lista
         selectElement.appendChild(opt);
     });
 }
 
 function lagre() {
+    // Henter resultat fra skjema og starter utskrift av resultat
     if (lag1Select.value === '' || lag2Select.value === '') {
         window.alert('Du må velge lagene som har spilt mot hverandre!');
     } else if (lag1Select.value === lag2Select.value) {
@@ -54,8 +56,11 @@ function lagre() {
 }
 
 function resultatUtskrift(l1m, l2m) {
-    lag1NavnUtskrift.innerHTML = pulje[lag1Select.value].navn;
-    lag2NavnUtskrift.innerHTML = pulje[lag2Select.value].navn;
+    // Lager utskrift av resultat, viser på skjerm
+    const l1 = pulje.find(lag => lag.id === lag1Select.value);
+    const l2 = pulje.find(lag => lag.id === lag2Select.value);
+    lag1NavnUtskrift.innerHTML = l1.navn;
+    lag2NavnUtskrift.innerHTML = l2.navn;
     if (l1m > l2m) {
         // Lag 1 vant
         lag1Resultat.innerHTML = "Resultat: Seier";
@@ -80,11 +85,11 @@ function resultatUtskrift(l1m, l2m) {
 }
 
 function init() {
+    // Funksjon kjøres ved lasting av side, genererer select-menyer
     console.log('init');
     lagSelectMeny(lag1Select, pulje);
     lagSelectMeny(lag2Select, pulje);    
 }
-
 
 lagreKnapp.addEventListener('click', lagre);
 window.addEventListener('load', init);

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="BITJUNGLE Rune Mathisen">
+    <meta name="date" content="16 Feb 2021">
+    <title>Treningslogg</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="w3-container">
+        <h1>Treningslogg</h1>
+        <div class="w3-responsive">
+            <table class="w3-table-all w3-hoverable">
+                <thead>
+                    <tr>
+                        <th>Sett</th>
+                        <th>Repetisjoner</th>
+                        <th>Motstand</th>
+                    </tr>
+                </thead>
+                <tbody id="loggdata">
+                    <!-- Innhold blir satt fra Javascript -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Legg til nytt sett:</td>
+                        <td><input type="number" id="reps"></td>
+                        <td><input type="number" id="motstand"></td>
+                    </tr>
+                </tfoot>
+            </table>
+            <button id="leggtil" class="w3-button w3-blue w3-right">Legg til sett</button>
+            <div id="volum" class="w3-responsive"></div>
+        </div>
+    </main>
+</body>
+</html>

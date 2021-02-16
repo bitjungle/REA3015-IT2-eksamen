@@ -29,7 +29,7 @@ function lagSelectMeny(selectElement) {
         opt = document.createElement("option");
         opt.innerHTML = `${a.navn} (${a.kcal} kcal/time)`;
         opt.value = a.navn;
-        // Legger laget til select-lista
+        // Legger aktiviteten til select-lista
         selectElement.appendChild(opt);
     });
 }

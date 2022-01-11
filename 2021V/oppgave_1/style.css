@@ -1,0 +1,71 @@
+#oppstart {
+    background-color: silver;
+    padding: 2em;
+}
+
+#startKnapp {
+    background-color: #227e25;
+    border: none;
+    color: white;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+}
+
+#startKnapp:hover {
+    background-color: #094e0b;
+}
+
+#startKnapp:active {
+    background-color: #d69110;
+}
+
+#antallSpill {
+    padding: 5px;
+    width: 4em;
+}
+
+#spill {
+    background-color: rgb(248, 230, 205);
+    padding: 2em;
+}
+
+.myntBilde {
+    animation: myMove 15s infinite;
+    border-radius: 200px;
+    padding: 10px;
+    border: 10px solid transparent;
+}
+
+@keyframes myMove {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.soyle {
+    height: 2em;
+    color: white;
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+#antallRiktig {
+    background-color: green;
+}
+
+#antallFeil {
+    background-color: red;
+}
+
+#spillIgjen {
+    background-color: skyblue;
+    width: fit-content;
+    padding: 10px;
+}
+
+#spillIgjen:hover {
+    background-color: aqua;
+}

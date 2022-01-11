@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kron eller mynt?</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <h1>Kron eller mynt?</h1>
+        <div id="oppstart">
+            <span id="oppstartMelding">Hvor mange ganger vil du spille?</span>
+            <input id="antallSpill" type="number" value="1" step="2" min="1">
+            <button id="startKnapp">Start</button>
+        </div>
+        <div id="spill">
+            <h2 id="spillMelding">Velg side:</h2>
+            <img src="kron.png" alt="Kron" class="myntBilde" id="kronBilde">
+            <img src="mynt.png" alt="Mynt" class="myntBilde" id="myntBilde">
+            <div id="runderSpilt"></div>
+            <div id="feedback">
+                <div id="runderSpilt"></div>
+                <div id="antallRiktig" class="soyle"></div>
+                <div id="antallFeil" class="soyle"></div>
+            </div>
+            <div id="spillIgjen">
+                Klikk her for å spille en gang til
+            </div>
+        </div>
+    </main>
+</body>
+</html>

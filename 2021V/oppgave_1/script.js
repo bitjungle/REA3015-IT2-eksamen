@@ -126,7 +126,6 @@ function spillRunde(e) {
     if (valgtSide === kast) {
         antallRiktig++;
         spillMelding.innerHTML = 'Du vant! Velg en gang til:';
-        console.log(100*(antallRiktig/antallSpill));
         antallRiktigDiv.style.width = 100*(antallRiktig/antallSpill) + '%';
         antallRiktigDiv.innerHTML = antallRiktig;
     } else {

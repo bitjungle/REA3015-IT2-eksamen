@@ -1,3 +1,10 @@
+/** 
+ * Eksamen IT2 våren 2021, oppgave 1
+ * 
+ * Copyright (C) 2022 BITJUNGLE Rune Mathisen
+ * Koden er lisensiert under en GPLv3-lisens 
+ * Se http://www.gnu.org/licenses/gpl-3.0.html 
+ */
 const oppstartDiv = document.querySelector("#oppstart");
 const spillDiv = document.querySelector("#spill");
 const runderSpiltDiv = document.querySelector("#runderSpilt");

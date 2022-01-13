@@ -69,3 +69,12 @@
 #spillIgjen:hover {
     background-color: aqua;
 }
+
+footer {
+    color: silver;
+}
+
+footer a {
+    text-decoration: none;
+    color: silver;
+}

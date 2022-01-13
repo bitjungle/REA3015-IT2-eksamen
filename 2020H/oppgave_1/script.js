@@ -1,4 +1,10 @@
-'use strict';
+/** 
+ * Eksamen IT2 høsten 2020, oppgave 1
+ * 
+ * Copyright (C) 2021 BITJUNGLE Rune Mathisen
+ * Koden er lisensiert under en GPLv3-lisens 
+ * Se http://www.gnu.org/licenses/gpl-3.0.html 
+ */
 
 const can1 = document.querySelector("#can1");
 const button = document.querySelector("#submit");
@@ -21,9 +27,11 @@ const animIntTime = 50; // ms - intervall mellom hvert animasjonsbilde
 const intervals = animTime / animIntTime; // antall animasjonsintervaller
 const sf = 50; // Skaleringsfaktor for omregning mellom cm og piksler
 
-function init() {
+button.addEventListener('click', draw);
+
+function draw() {
     console.log('init');
-    width = rectWidth.value;           // Henter ønska bredde fra HTML input
+    width = rectWidth.value;       // Henter ønska bredde fra HTML input
     widthNow = 0;                  // Startverdi for bredde
     height = calcRectHeight(width);// Sluttverdi for høyde
     heightNow = 0;                 // Startverdi for høyde
@@ -82,4 +90,3 @@ function blank() {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 }
 
-button.addEventListener('click', init);

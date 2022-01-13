@@ -1,33 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nb">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="BITJUNGLE Rune Mathisen">
-    <meta name="date" content="31 Jan 2021">
-    <title>Document</title>
+    <title>Eksamen IT2 høsten 2019 oppgave 1</title>
     <script src="script.js" defer></script>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <main class="w3-container">
-        <div class="w3-container">
+    <main>
+        <div>
             <img src="./img/kropp.gif" alt="Kropp" usemap="#kropp">
             <map name="kropp">
-                <map name="image-map">
-                    <area onclick="muskelInfo('kappe')" alt="Kappemuskelen" title="Kappemuskelen" coords="316,155,350,134" shape="rect">
-                    <area onclick="muskelInfo('ryggstrekk')" alt="Ryggstrekkerne" title="Ryggstrekkerne" coords="298,109,295,155,294,203,293,246,286,278,293,307,309,308,317,278,310,248,304,201,305,156,305,111" shape="poly">
-                    <area onclick="muskelInfo('rygg')" alt="Ryggmuskelen" title="Ryggmuskelen" coords="327,214,312,243,335,293,364,211,342,212" shape="poly">
-                    <area onclick="muskelInfo('armstrekk')" alt="Armstrekkeren" title="Armstrekkeren" coords="375,185,389,174,419,175,419,188,404,191" shape="poly">
-                    <area onclick="muskelInfo('hoftestrekk')" alt="Hoftestrekkerne" title="Hoftestrekkerne" coords="321,316,351,338,346,376,325,383,308,369,308,336" shape="poly">
-                    <area onclick="muskelInfo('kneboy')" alt="Knebøyerne" title="Knebøyerne" coords="322,425,345,440,346,462,328,488" shape="poly">
-                    <area onclick="muskelInfo('ankelstrekk')" alt="Ankelstrekkerne" title="Ankelstrekkerne" coords="331,517,351,568" shape="rect">
-                </map>
+                <area id="rygg" class="muskler" alt="Ryggmuskelen" title="Den brede ryggmuskelen"
+                    coords="327,214,312,243,335,293,364,211,342,212" shape="poly">
+                <area id="armstrekk" class="muskler" alt="Armstrekkeren" title="Armstrekkeren"
+                    coords="375,185,389,174,419,175,419,188,404,191" shape="poly">
+            </map>
         </div>
-        <div id="muskelinfo" class="w3-container">
+        <div id="muskelinfo">
             <h1 id="muskelnavn"></h1>
         </div>
     </main>
 </body>
+
 </html>

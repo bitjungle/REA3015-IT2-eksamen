@@ -14,7 +14,7 @@ const spillIgjenDiv = document.querySelector("#spillIgjen");
 let antallSpill = 1;    // Bruker velger antall spill ved oppstart
 let antallRiktig;       // Teller antall riktige gjettinger
 let spillRundeTeller;   // Teller hvor mange ganger det er spilt
-let marker = 0; // Endrer markørfarge, flipper mellom 0 og 1 når det spilles
+let fargeValg = 0; // Endrer markørfarge, flipper mellom 0 og 1 når det spilles
 
 window.addEventListener('load', init);
 
@@ -102,37 +102,19 @@ function visSpillOmraade() {
  * @param {Object} e EventObjekt
  */
 function spillRunde(e) {
-    // Veksler mellom disse fargene i hver runde, sånn at brukeren
-    // tydelig skal se at det er en ny runde.
-    const valgFarger = ["goldenrod", "orange"];
-    const kastFarger = ["green", "limegreen"];
+    // Appen veksler mellom to farger sånn at brukeren tydelig skal se 
+    // at det er en ny runde. Her brukes en syntaks som kalles 
+    // "conditional (ternary) operator". I dette tilfellet flipper den 
+    // verdien til fargeValg mellom 0 og 1.
+    fargeValg = (fargeValg === 0) ? 1 : 0;
 
-    // Her brukes en syntaks som kalles "conditional (ternary) operator".
-    // I dette tilfellet flipper den verdien til marker mellom 0 og 1.
-    marker = (marker === 0) ? 1 : 0;
-
-    const valgtSide = e.target.id;
-    console.log(valgtSide);
-    
     spillRundeTeller++;
     runderSpiltDiv.innerHTML = "Runder spilt: " + spillRundeTeller;
 
-    if (valgtSide === 'kronBilde') {
-        kronBilde.style.backgroundColor = valgFarger[marker];
-        myntBilde.style.backgroundColor = "";
-    } else {
-        kronBilde.style.backgroundColor = "";
-        myntBilde.style.backgroundColor = valgFarger[marker];
-    }
-
-    kast = myntkast();
-    if (kast === 'kronBilde') {
-        kronBilde.style.borderColor = kastFarger[marker];
-        myntBilde.style.borderColor = "";
-    } else {
-        kronBilde.style.borderColor = "";
-        myntBilde.style.borderColor = kastFarger[marker];
-    }
+    const valgtSide = e.target.id;
+    markerValgt(valgtSide, fargeValg);
+    const kast = myntkast();
+    markerUtfall(kast, fargeValg);
 
     if (valgtSide === kast) {
         antallRiktig++;
@@ -150,5 +132,39 @@ function spillRunde(e) {
     if (spillRundeTeller >= antallSpill) {
         avsluttSpill();
     }
-
 }
+
+/**
+ * Markerer den siden av mynten som spilleren har valgt
+ * 
+ * @param {string} side Kan ha verdiene kronBilde eller myntBilde
+ * @param {integer} farge Kan ha verdiene 0 eller 1
+ */
+function markerValgt(side, farge) {
+    const valgFarger = ["goldenrod", "orange"];
+    if (side === 'kronBilde') {
+        kronBilde.style.backgroundColor = valgFarger[farge];
+        myntBilde.style.backgroundColor = "";
+    } else {
+        kronBilde.style.backgroundColor = "";
+        myntBilde.style.backgroundColor = valgFarger[farge];
+    }    
+}
+
+/**
+ * Markerer den siden av mynten som den landet på etter et kast
+ * 
+ * @param {string} side Kan ha verdiene kronBilde eller myntBilde
+ * @param {integer} farge Kan ha verdiene 0 eller 1
+ */
+function markerUtfall(side, farge) {
+    const kastFarger = ["green", "limegreen"];
+    if (side === 'kronBilde') {
+        kronBilde.style.borderColor = kastFarger[farge];
+        myntBilde.style.borderColor = "";
+    } else {
+        kronBilde.style.borderColor = "";
+        myntBilde.style.borderColor = kastFarger[farge];
+    }
+}
+

@@ -5,20 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="BITJUNGLE Rune Mathisen">
-    <meta name="date" content="16 Feb 2021">
-    <title>Treningskalkulator</title>
+    <title>Treningskalkulator - eksamen IT2 høsten 2019 oppgave 2</title>
     <script src="script.js" defer></script>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <main class="w3-container">
+    <main>
         <h1>Treningskalkulator</h1>
-        <div id="aktivitetsvalg" class="w3-container">
+        <div id="aktivitetsvalg">
         <select id="aktivitet"></select>
         </div>
-        <div id="intensitetsvalg" class="w3-container">
+        <div id="intensitetsvalg">
             <p>Velg intensitet:</p>
             <input type="radio" id="lav" value="0.8" name="intensitet">Lav<br>
             <input type="radio" id="middels" value="1.0" name="intensitet" selected>Middels<br>
@@ -28,8 +26,8 @@
             <p>Oppgi varighet på treninga i minutter:</p>
             <input id="varighet" type="number" min="0" value="0">
         </div>
-        <button id="beregn" class="w3-button w3-blue">Beregn kaloriforbruk</button>
-        <div id="svarområde" class="w3-container">
+        <button id="beregn">Beregn kaloriforbruk</button>
+        <div id="svarområde">
             <p>Svar:</p>
             <p id="svar"></p>
         </div>

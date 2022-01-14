@@ -26,17 +26,15 @@ const aktiviteter = [
     new Aktivitet('Jogging', 666)
 ];
 
-window.addEventListener('load', init);
-
-/**
- * Funksjonen kjøres en gang ved oppstart av appen
+ /**
+ * Kjøres en gang ved lasting av app
  */
-function init() {
+window.addEventListener('load', () => {
     // Legger funksjonalitet på beregn-knappen i brukergrensesnittet
     document.querySelector("#beregn").addEventListener('click', beregn);
     // Lager og skriver ut aktivitetsmenyen
     lagSelectMeny(selectAktivitet);
-}
+});
 
 /**
  * Lager select-meny med de ulike aktivitetene

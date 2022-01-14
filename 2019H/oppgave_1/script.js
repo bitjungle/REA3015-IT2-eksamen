@@ -23,16 +23,14 @@ const muskler = [
     new Muskel('rygg', 'Den brede ryggmuskelen')
 ];
 
-window.addEventListener('load', init);
-
 /**
- * Funksjonen kjøres en gang ved oppstart av app.
+ * Kjøres en gang ved lasting av app
  */
-function init() {
+window.addEventListener('load', () => {
     muskelMap.forEach( (m) => {
         m.addEventListener('click', muskelInfo);
     });
-}
+});
 
 /**
  * Trigges ved klikk på ImageMap, finner valgt muskel og viser info+lyd

@@ -1,3 +1,12 @@
+/** 
+ * Eksamen IT2 høsten 2019, oppgave 3 del 1
+ * 
+ * Copyright (C) 2021 BITJUNGLE Rune Mathisen
+ * Koden er lisensiert under en GPLv3-lisens 
+ * Se http://www.gnu.org/licenses/gpl-3.0.html 
+ */
+
+// Referanse til DOM-objekt for valg av muskelgruppe
 let selectMuskel = document.querySelector("#muskelgrupper");
 
 // Generell klasse for alle muskelgrupper

@@ -1,5 +1,6 @@
-const listeOvinger = document.querySelector("#ovinger_liste");
 let selectMuskel = document.querySelector("#muskelgrupper");
+
+// Generell klasse for alle muskelgrupper
 class Muskelgruppe {
     constructor(navn, ovinger) {
         this.navn = navn;
@@ -7,7 +8,8 @@ class Muskelgruppe {
     }
 }
 
-muskelgrupper = [
+// Liste med objekter for alle muskelgrupper
+const muskelgrupper = [
     new Muskelgruppe('Armer', ['Bicepscurl med stang', 'Fransk press']),
     new Muskelgruppe('Skuldre', ['Stående militærpress', 'Sidehev']),
     new Muskelgruppe('Ben', ['Knebøy', 'Leg extension', 'Leg curl']),
@@ -15,6 +17,25 @@ muskelgrupper = [
     new Muskelgruppe('Bryst', ['Benkpress', 'Flies', 'Push up'])
 ];
 
+/**
+ * Kjøres en gang ved lasting av app
+ */
+window.addEventListener('load', () => {
+    lagSelectMeny(selectMuskel);
+});
+
+/**
+ * Kjøres hver gang valget i select-menyen endres
+ */
+ selectMuskel.addEventListener('change', () => {
+    finnOvinger(selectMuskel.value);
+});
+
+/**
+ * Fyller select-menyen opp med de ulike muskelgruppene
+ * 
+ * @param {object} selectElement 
+ */
 function lagSelectMeny(selectElement) {
     // Legger først inn første element
     let opt = document.createElement("option");
@@ -24,7 +45,6 @@ function lagSelectMeny(selectElement) {
     selectElement.appendChild(opt);
     // Itererer over alle aktivitetene 
     muskelgrupper.forEach((m) => {
-        console.log(m);
         opt = document.createElement("option");
         opt.innerHTML = `${m.navn}`;
         opt.value = m.navn;
@@ -33,21 +53,17 @@ function lagSelectMeny(selectElement) {
     });
 }
 
+/**
+ * Skriver ut aktuelle øvelser for den valgte muskelgruppen
+ * 
+ * @param {string} muskelvalg 
+ */
 function finnOvinger(muskelvalg) {
+    const listeOvinger = document.querySelector("#ovinger_liste");
     listeOvinger.innerHTML = '';
     const muskel = muskelgrupper.find(m => m.navn === muskelvalg);
     muskel.ovinger.forEach(o => {
         listeOvinger.innerHTML += `<li>${o}</li>\n`;
     });
 }
-
-function init() {
-    lagSelectMeny(selectMuskel);
-}
-
-window.addEventListener('load', init);
-selectMuskel.addEventListener('change', () => {
-    //Event change fungerer ikke i Safari, vet ikke hvorfor
-    finnOvinger(selectMuskel.value);
-});
 

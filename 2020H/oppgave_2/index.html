@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nb">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="BITJUNGLE Rune Mathisen">
-    <meta name="date" content="15 Jan 2021">
-    <title>Document</title>
-    <script src="script.js" defer></script>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Firkanter - Eksamen IT2 høsten 2020 oppgave 2</title>
+    <script type="module" src="script.js" defer></script>
+    <link rel="stylesheet" href="w3.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -34,7 +33,7 @@
         </div>
         <hr>
         <h2>Legg til, endre eller slette</h2>
-        <p>Klikk på rad i tabell for å endre eller slette en firkant. Du kan endre parametrene til firkanten i
+        <p>Klikk på rad i tabellen ovenfor for å endre eller slette en firkant. Du kan endre parametrene til firkanten i
             skjemafeltene nedenfor. Om du vil lage en helt ny firkant, trykker du på
             knappen "Legg til...".</p>
         <div id="inputskjema" class="w3-container">
@@ -47,14 +46,14 @@
             <input id="hoyde" name="hoyde" type="number" value="1" min="1">
             <label for="forskyvning">Forskyvning</label>
             <input id="forskyvning" name="forskyvning" type="number" value="0" min="0">
-            <br>
-            <button id="lagreFirkant">Lagre</button>
-            <button id="slettFirkant">Slett</button>
-            <button id="nyFirkant">Legg til ny firkant</button>
+            <hr>
+            <button id="lagreFirkant" class="w3-button w3-green">Lagre</button>
+            <button id="slettFirkant" class="w3-button w3-red">Slett</button>
+            <button id="nyFirkant" class="w3-button w3-blue">Legg til ny firkant</button>
         </div>
         <h2>Figur</h2>
         <div id="tegneområde" class="w3-container">
-            <p>Klikk på rad i tabellen for å tegne firkant</p>
+            <p>Klikk på rad i tabellen ovenfor for å tegne valgte firkant</p>
             <canvas id="can1">Kan ikke vise tegning av firkanten.</canvas>
         </div>
     </main>

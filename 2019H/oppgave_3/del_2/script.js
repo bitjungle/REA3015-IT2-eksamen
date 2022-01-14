@@ -1,9 +1,15 @@
-const knappLeggTil = document.querySelector("#leggtil");
+/** 
+ * Eksamen IT2 høsten 2019, oppgave 3 del 2
+ * 
+ * Copyright (C) 2021 BITJUNGLE Rune Mathisen
+ * Koden er lisensiert under en GPLv3-lisens 
+ * Se http://www.gnu.org/licenses/gpl-3.0.html 
+ */
+
 const inputReps = document.querySelector("#reps");
 const inputMotstand = document.querySelector("#motstand");
-const loggdata = document.querySelector("#loggdata");
-const outputVolum = document.querySelector("#volum");
 
+// Klasse for lagring av et sett
 class Sett {
     constructor(reps, motstand) {
         this.reps = reps;
@@ -15,23 +21,56 @@ class Sett {
     }
 }
 
-// Lagringsplass for nye sett, etter hvert som de legges til
+// Lagringsplass for nye sett (objekter)
 const alleSett = [];
 
+/**
+ * Kjøres en gang ved lasting av app
+ */
+window.addEventListener('load', () => {
+    document.querySelector("#leggtil").addEventListener('click', leggTil);
+    inputReps.focus();
+});
+
+/**
+ * Kjøres når markør står i repetisjon-felt og bruker trykker <enter>
+ */
+inputReps.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        inputMotstand.focus();//Plasserer markør i neste input-element
+    }
+});
+
+/**
+ * Kjøres når markør står i motstand-felt og bruker trykker <enter>
+ */
+ inputMotstand.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        leggTil();
+        inputReps.focus();
+    }
+});
+
+/**
+ * Skriver ut html-tabell med alle lagrede sett
+ * 
+ */
 function skrivUtTabell() {
-    // Skriver ut html-tabell med alle lagrede sett
     let html = "";
     let volum = 0;
     alleSett.forEach((s, i) => {
         html += s.htmlTabellRad(i + 1);
         volum += s.reps * s.motstand;
     });
-    loggdata.innerHTML = html;
-    outputVolum.innerHTML = `Treningsvolum ${volum} kg`;
+    document.querySelector("#loggdata").innerHTML = html;
+    document.querySelector("#volum").innerHTML = `Treningsvolum ${volum} kg`;
 }
 
+/**
+ * Tar innholdet i input-feltene og lager et nytt sett
+ * 
+ */
 function leggTil() {
-    // Lagrer nytt sett
     if (inputReps.value && inputMotstand.value) {
         alleSett.push(new Sett(parseInt(inputReps.value), 
                                parseInt(inputMotstand.value))
@@ -41,25 +80,3 @@ function leggTil() {
     }
     skrivUtTabell();
 }
-
-function init() {
-    // Kjøres ved oppstart av appen
-    inputReps.focus();
-}
-
-window.addEventListener('load', init);
-
-knappLeggTil.addEventListener('click', leggTil);
-
-inputReps.addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-        inputMotstand.focus();//Plasserer markør i neste input-element
-    }
-});
-
-inputMotstand.addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-        leggTil();//Tar innholdet i input-feltene og lager et nytt sett
-        inputReps.focus();
-    }
-});

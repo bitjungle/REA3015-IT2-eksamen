@@ -12,6 +12,7 @@ let bildeY = 0;
 let valgtLag = null;
 let forrigeValgteLag = null;
 
+// Definerer klasse for alle lag
 class Lag {
     constructor(navn, drakt, kamprop) {
         this.navn = navn;
@@ -25,14 +26,31 @@ class Lag {
     }
 }
 
+// Lager en liste av objekter med lag som er i samme pulje
 const pulje = {
     milan: new Lag('AC Milan', './img/milan.jpg', './snd/milan.mp3'),
     roma: new Lag('AS Roma', './img/roma.jpg', './snd/roma.mp3'),
     inter: new Lag('FC Inter', './img/inter.jpg', './snd/inter.mp3')
 };
 
+/**
+ * Legger til en eventListener() til hvert enkelt lag i navigasjonsmenyen
+ */
+Object.keys(meny).forEach((key) => {
+    meny[key].addEventListener('click', () => {
+        valgtLag = key;
+        visValgtLag(key);
+    });
+});
+
+/**
+ * Viser animasjon for valgt lag og spiller av lyd
+ * 
+ */
 function visValgtLag() {
-    if (forrigeValgteLag) meny[forrigeValgteLag].classList.toggle('w3-light-gray');
+    if (forrigeValgteLag) {
+        meny[forrigeValgteLag].classList.toggle('w3-light-gray');
+    }
     meny[valgtLag].classList.toggle('w3-light-gray');
     lagNavn.innerHTML = pulje[valgtLag].navn;
     requestAnimationFrame(anim);
@@ -40,10 +58,19 @@ function visValgtLag() {
     forrigeValgteLag = valgtLag;
 }
 
+/**
+ * For bruk i animasjon, blanker ut canvas-en
+ * 
+ */
 function blankCanvas() {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 }
 
+/**
+ * Animerer visning av drakt for valgt lag
+ * Kalles fra requestAnimationFrame()
+ * 
+ */
 function anim() {
     bildeX += 4;
     bildeY += 3;
@@ -61,11 +88,3 @@ function anim() {
         bildeY = 0;
     }
 }
-
-
-Object.keys(meny).forEach((key) => {
-    meny[key].addEventListener('click', () => {
-        valgtLag = key;
-        visValgtLag(key);
-    });
-});

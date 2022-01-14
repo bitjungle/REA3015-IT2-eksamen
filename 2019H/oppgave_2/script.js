@@ -1,6 +1,15 @@
-const beregnKnapp = document.querySelector("#beregn");
+/** 
+ * Eksamen IT2 høsten 2019, oppgave 2
+ * 
+ * Copyright (C) 2021 BITJUNGLE Rune Mathisen
+ * Koden er lisensiert under en GPLv3-lisens 
+ * Se http://www.gnu.org/licenses/gpl-3.0.html 
+ */
+
+// Referanse til DOM-objekt for valg av aktivitet
 const selectAktivitet = document.querySelector("#aktivitet");
 
+// Generell klasse for alle typer aktiviteter
 class Aktivitet {
     constructor(navn, kcal) {
         this.navn = navn;
@@ -8,7 +17,8 @@ class Aktivitet {
     }
 }
 
-aktiviteter = [
+// Lager en liste av objekter med aktiviteter
+const aktiviteter = [
     new Aktivitet('Aerobics', 814),
     new Aktivitet('Bordtennis', 236),
     new Aktivitet('Fotball', 510),
@@ -16,6 +26,23 @@ aktiviteter = [
     new Aktivitet('Jogging', 666)
 ];
 
+window.addEventListener('load', init);
+
+/**
+ * Funksjonen kjøres en gang ved oppstart av appen
+ */
+function init() {
+    // Legger funksjonalitet på beregn-knappen i brukergrensesnittet
+    document.querySelector("#beregn").addEventListener('click', beregn);
+    // Lager og skriver ut aktivitetsmenyen
+    lagSelectMeny(selectAktivitet);
+}
+
+/**
+ * Lager select-meny med de ulike aktivitetene
+ * 
+ * @param {Object} selectElement 
+ */
 function lagSelectMeny(selectElement) {
     // Legger først inn første element
     let opt = document.createElement("option");
@@ -25,7 +52,6 @@ function lagSelectMeny(selectElement) {
     selectElement.appendChild(opt);
     // Itererer over alle aktivitetene 
     aktiviteter.forEach((a) => {
-        console.log(a);
         opt = document.createElement("option");
         opt.innerHTML = `${a.navn} (${a.kcal} kcal/time)`;
         opt.value = a.navn;
@@ -34,10 +60,10 @@ function lagSelectMeny(selectElement) {
     });
 }
 
-function init() {
-    lagSelectMeny(selectAktivitet);
-}
-
+/**
+ * Beregner kaloriforbruk og skriver resultat til nettsiden
+ * 
+ */
 function beregn() {
     const intensitet = parseFloat(document.querySelector('input[name=intensitet]:checked').value);
     const varighet = parseInt(document.querySelector("#varighet").value);
@@ -50,5 +76,3 @@ function beregn() {
     }
 }
 
-window.addEventListener('load', init);
-beregnKnapp.addEventListener('click', beregn);

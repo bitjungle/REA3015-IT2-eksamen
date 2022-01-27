@@ -2,3 +2,6 @@
     text-transform: capitalize;
     position: absolute;
 }
+.muskler {
+    cursor: pointer;
+}
